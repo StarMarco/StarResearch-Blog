@@ -9,8 +9,8 @@
 <meta property="og:title" content="Variational Autoencoders" />
 <meta name="author" content="Marco Star" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Variational Autoencoders (VAEs) have been covered in many different texts and blog posts. The goal here is not so much to repeat the information covered by so many others but instead to look at the VAE with the goal of introducing Dynamical Variational Autoencoders (DVAEs) later. Ultimately the aim is to cover how learn latent dynamics that describe the behaviour of complex systems. *Note, on the off chance someone is actually reading this (thank you for your interest) but this is my first blog post and so this content may change as I experiment with features and use this notebook as a prototype for future posts. So consider this a draft post for now" />
-<meta property="og:description" content="Variational Autoencoders (VAEs) have been covered in many different texts and blog posts. The goal here is not so much to repeat the information covered by so many others but instead to look at the VAE with the goal of introducing Dynamical Variational Autoencoders (DVAEs) later. Ultimately the aim is to cover how learn latent dynamics that describe the behaviour of complex systems. *Note, on the off chance someone is actually reading this (thank you for your interest) but this is my first blog post and so this content may change as I experiment with features and use this notebook as a prototype for future posts. So consider this a draft post for now" />
+<meta name="description" content="Variational Autoencoders (VAEs) {% cite Kingma2014 %}have been covered in many different texts and blog posts. The goal here is not so much to repeat the information covered by so many others but instead to look at the VAE with the goal of introducing Dynamical Variational Autoencoders (DVAEs) later. Ultimately the aim is to cover how learn latent dynamics that describe the behaviour of complex systems. *Note, on the off chance someone is actually reading this (thank you for your interest) but this is my first blog post and so this content may change as I experiment with features and use this notebook as a prototype for future posts. So consider this a draft post for now" />
+<meta property="og:description" content="Variational Autoencoders (VAEs) {% cite Kingma2014 %}have been covered in many different texts and blog posts. The goal here is not so much to repeat the information covered by so many others but instead to look at the VAE with the goal of introducing Dynamical Variational Autoencoders (DVAEs) later. Ultimately the aim is to cover how learn latent dynamics that describe the behaviour of complex systems. *Note, on the off chance someone is actually reading this (thank you for your interest) but this is my first blog post and so this content may change as I experiment with features and use this notebook as a prototype for future posts. So consider this a draft post for now" />
 <link rel="canonical" href="https://starmarco.github.io/StarResearch-Blog/2022/05/30/VAE.html" />
 <meta property="og:url" content="https://starmarco.github.io/StarResearch-Blog/2022/05/30/VAE.html" />
 <meta property="og:site_name" content="Star Research Blog" />
@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Variational Autoencoders" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Marco Star"},"dateModified":"2022-05-30T00:00:00-05:00","datePublished":"2022-05-30T00:00:00-05:00","description":"Variational Autoencoders (VAEs) have been covered in many different texts and blog posts. The goal here is not so much to repeat the information covered by so many others but instead to look at the VAE with the goal of introducing Dynamical Variational Autoencoders (DVAEs) later. Ultimately the aim is to cover how learn latent dynamics that describe the behaviour of complex systems. *Note, on the off chance someone is actually reading this (thank you for your interest) but this is my first blog post and so this content may change as I experiment with features and use this notebook as a prototype for future posts. So consider this a draft post for now","headline":"Variational Autoencoders","mainEntityOfPage":{"@type":"WebPage","@id":"https://starmarco.github.io/StarResearch-Blog/2022/05/30/VAE.html"},"url":"https://starmarco.github.io/StarResearch-Blog/2022/05/30/VAE.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Marco Star"},"dateModified":"2022-05-30T00:00:00-05:00","datePublished":"2022-05-30T00:00:00-05:00","description":"Variational Autoencoders (VAEs) {% cite Kingma2014 %}have been covered in many different texts and blog posts. The goal here is not so much to repeat the information covered by so many others but instead to look at the VAE with the goal of introducing Dynamical Variational Autoencoders (DVAEs) later. Ultimately the aim is to cover how learn latent dynamics that describe the behaviour of complex systems. *Note, on the off chance someone is actually reading this (thank you for your interest) but this is my first blog post and so this content may change as I experiment with features and use this notebook as a prototype for future posts. So consider this a draft post for now","headline":"Variational Autoencoders","mainEntityOfPage":{"@type":"WebPage","@id":"https://starmarco.github.io/StarResearch-Blog/2022/05/30/VAE.html"},"url":"https://starmarco.github.io/StarResearch-Blog/2022/05/30/VAE.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/StarResearch-Blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://starmarco.github.io/StarResearch-Blog/feed.xml" title="Star Research Blog" /><link rel="shortcut icon" type="image/x-icon" href="/StarResearch-Blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -90,7 +90,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Variational Autoencoders</h1><p class="page-description">Variational Autoencoders (VAEs) have been covered in many different texts and blog posts. The goal here is not so much to repeat the information covered by so many others but instead to look at the VAE with the goal of introducing Dynamical Variational Autoencoders (DVAEs) later. Ultimately the aim is to cover how learn latent dynamics that describe the behaviour of complex systems. *Note, on the off chance someone is actually reading this (thank you for your interest) but this is my first blog post and so this content may change as I experiment with features and use this notebook as a prototype for future posts. So consider this a draft post for now</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-05-30T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Variational Autoencoders</h1><p class="page-description">Variational Autoencoders (VAEs) {% cite Kingma2014 %}have been covered in many different texts and blog posts. The goal here is not so much to repeat the information covered by so many others but instead to look at the VAE with the goal of introducing Dynamical Variational Autoencoders (DVAEs) later. Ultimately the aim is to cover how learn latent dynamics that describe the behaviour of complex systems. *Note, on the off chance someone is actually reading this (thank you for your interest) but this is my first blog post and so this content may change as I experiment with features and use this notebook as a prototype for future posts. So consider this a draft post for now</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-05-30T00:00:00-05:00" itemprop="datePublished">
         May 30, 2022
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -139,6 +139,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#A-Simple-Example">A Simple Example </a></li>
 <li class="toc-entry toc-h2"><a href="#The-Components-of-the-VAE">The Components of the VAE </a></li>
 <li class="toc-entry toc-h2"><a href="#Problems">Problems </a></li>
+<li class="toc-entry toc-h2"><a href="#References">References </a></li>
 </ul><!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
@@ -343,6 +344,24 @@ $$<p>Hence, the latent space consists of sequences $\{z_t\}_{t=0}^T$ where each 
 <li>Prior: $p(Z) = p_{\theta_z}(z_t|z_{t-1})$</li>
 </ul>
 <p>We could then design some simple prior dynamics and given an initial $z_0$ use $p_{\theta_z}(z_t|z_{t-1})$ to generate any sequence of arbitrary length. To design a VAE that does this is known as a DVAE and we will see that it is just the VAE but simplified (mathematically speaking not conceptually) to deal with sequences.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="References">
+<a class="anchor" href="#References" aria-hidden="true"><span class="octicon octicon-link"></span></a>References<a class="anchor-link" href="#References"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<ol class="bibliography"></ol>
 
 </div>
 </div>
